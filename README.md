@@ -1,6 +1,7 @@
 # tenfourfox-macports
-portfiles to build tenfourfox using MacPorts
-presently this builds for Intel only -- ppc builds will be added soon (as soon as I sort out how to automatically select the Power chip variants using tcl)
+portfiles to build tenfourfox using MacPorts.
+
+Presently this builds for Intel only -- PPC builds will be added soon (as soon as I sort out how to properly detect the Power chip variants using TCL)
 
 To use this repository, first clone it to your local drive
 ```
