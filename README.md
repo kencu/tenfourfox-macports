@@ -8,6 +8,12 @@ git clone https://github.com/kencu/tenfourfox-macports.git
 ```
 And then tell your installation of MacPorts to use it as an additional repository. We will place this after the main MacPorts repository, so as not to interfere with any ports in the main repository.
 
+assuming you installed MacPorts into /opt/local
+
 ```
-echo file:///Users/Shared/tenfourfox-macports >> /opt/local/etc/macports/sources.conf # assuming you installed MacPorts into /opt/local
+sudo vi /opt/local/etc/macports/sources.conf
+```
+and add the following source to the end of the file
+```
+file:///Users/Shared/tenfourfox-macports
 ```
