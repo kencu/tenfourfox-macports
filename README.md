@@ -13,7 +13,7 @@ assuming you installed MacPorts into /opt/local, edit the sources.conf file with
 ```
 bbedit /opt/local/etc/macports/sources.conf
 ```
-and add the following source to the end of the file
+and add the following source to the end of the file. Note -- there are THREE slashes after "file:" so you might just copy and paste this line.
 ```
 file:///Users/Shared/tenfourfox-macports
 ```
