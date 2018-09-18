@@ -3,7 +3,13 @@ portfiles to build tenfourfox using MacPorts.
 
 Presently this builds for Intel only -- PPC builds will be added soon (as soon as I sort out how to properly detect the Power chip variants using TCL)
 
-To use this repository, first clone it to your local drive
+To use this repository, first clone it to your local drive. 
+
+To do this successfully on any older system that you would be using tenfourfox on, you will first need to install a current version of git using MacPorts, of course:
+```
+sudo port -v install git
+```
+and then:
 ```
 cd /Users/Shared
 git clone https://github.com/kencu/tenfourfox-macports.git
