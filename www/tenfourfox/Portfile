@@ -112,6 +112,10 @@ configure.cxx_stdlib libstdc++
 # for now, for Ion build, select the other mozconfig
 # and enable the Ion patches
 
+# On PPC, this sets $cpu to the result (ppc750, ppc7400, ppc7450, ppc970).
+# set cpu [exec "/usr/bin/machine"]
+
+
 
 platform darwin i386 {
     # select a config file. This one is good for Intel deployment.
