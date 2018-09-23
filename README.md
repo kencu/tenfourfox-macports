@@ -11,8 +11,8 @@ sudo port -v install git
 ```
 and then:
 ```
-cd /Users/Shared
-git clone https://github.com/kencu/tenfourfox-macports.git
+cd /opt
+sudo git clone https://github.com/kencu/tenfourfox-macports.git
 ```
 And then tell your installation of MacPorts to use it as an additional repository. We will place this after the main MacPorts repository, so as not to interfere with any ports in the main repository.
 
@@ -23,7 +23,7 @@ bbedit /opt/local/etc/macports/sources.conf
 ```
 and add the following source to the end of the file. Note -- there are THREE slashes after "file:" so you might just copy and paste this line.
 ```
-file:///Users/Shared/tenfourfox-macports
+file:///opt/tenfourfox-macports
 ```
 then save the file, and sync your ports.
 ```
