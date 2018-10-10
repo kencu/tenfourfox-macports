@@ -126,9 +126,6 @@ platform darwin i386 {
     post-extract {
         copy ${filespath}/ken-intel-nodebug.mozconfig ${worksrcpath}/.mozconfig
 #        copy ${filespath}/ken-intel-nodebug-with-ion.mozconfig ${worksrcpath}/.mozconfig
-
-    reinplace "s|/opt/local|${prefix}|g" ${worksrcpath}/.mozconfig
-    reinplace "s|/opt/local|${prefix}|g" ${worksrcpath}/media/libvpx/Makefile.in
     }
 }
 
