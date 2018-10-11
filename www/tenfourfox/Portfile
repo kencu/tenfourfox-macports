@@ -45,23 +45,6 @@ if {${subport} eq "tenfourfox"} {
     checksums           rmd160  340430eff023e0f62dc9e76d7ba1978ee50de159 \
                         sha256  c47af3087b86a2c7fa29ec119133ba72768057d6d88ec90ae2d2e20570b95dac \
                         size    257895865
-
-# disable this HEAD variant for now as we assess how much confusion it might cause
-# with the versioning as below, it will always be out of date whenever tested
-# might get pretty annoying to rebuild it every day
-
-#    variant HEAD description "build tip of the commit tree" {
-#        github.setup        classilla tenfourfox HEAD
-#    
-        # set the version to right now
-#        set systemTime [clock seconds]
-#        version [clock format $systemTime -format {%Y%m%d-%H%M%S}]
-    
-        # ignore checksum as we can't know what it is on a HEAD pull
-#        checksum {}
-#    }
-
-
 }
 
 # verify we have the SDK
@@ -72,13 +55,6 @@ platform darwin {
     }
 }
 
-platform darwin {
-    # also, there's the enhanced ld64-97 to consider for Tiger
-
-    if {![file exists ${prefix}/bin/strip7]} {
-        pre-fetch { ui_error "Building $name @${version} requires strip7 to be installed in ${prefix}/bin" }
-    }
-}
 
 # <https://github.com/classilla/tenfourfox/wiki/HowToBuildFPR>
 depends_build-append \
@@ -93,8 +69,6 @@ depends_build-append \
                     port:strip7
  
 
-# extra deps for i386 - both are hardcoded into the libvpx build script for now
-# TODO - set up a reinplace to do it dynamically so we can fiddle with it
 platform darwin i386 {
     depends_build-append \
                     port:yasm \
@@ -102,27 +76,17 @@ platform darwin i386 {
 }
 
 # this is hardcoded into the mozconfig build script, but here anyway as a reminder
+# may someday make the compiler choice in the build script dynamic and reinplace it
 compiler.whitelist  macports-gcc-4.8
 
 configure.cxx_stdlib libstdc++
 
-
-### Ion Variant - will be created
-# at present, Ion variant is disabled as crashes ++
-# for now, for Ion build, select the other mozconfig
-# and enable the Ion patches
-
-# On PPC, this sets $cpu to the result (ppc750, ppc7400, ppc7450, ppc970).
-# set cpu [exec "/usr/bin/machine"]
-
-
-
 platform darwin i386 {
     # select a config file. This one is good for Intel deployment.
-    # todo -- add ability to select a debug config, and select some PPC ones
+    # todo -- add ability to select a debug config
     # todo -- generate the script dynamically to allow easier changes
     
-    # select ion version or not
+    # select ion version of the build script, or not
     post-extract {
         copy ${filespath}/ken-intel-nodebug.mozconfig ${worksrcpath}/.mozconfig
 #        copy ${filespath}/ken-intel-nodebug-with-ion.mozconfig ${worksrcpath}/.mozconfig
@@ -139,14 +103,10 @@ platform darwin i386 {
     patchfiles-append   patch-ycbcr-assembly-fix.diff
     patchfiles-append   patch-libvpx-makefiles-fix.diff
 
-    # extra patches to support ion build
+    # uncomment these extra patches to support ion build
     # patchfiles-append   patch-js-src-asmjs-asmjssignalhanders-cpp-register-structure.diff
     # patchfiles-append   patch-js-src-irregexp-nativeregexpmacroassembler-cpp.diff
 }
-
-
-
-
 
 use_autoconf        yes
 autoconf.cmd        autoconf213
