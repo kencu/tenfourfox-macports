@@ -39,12 +39,12 @@ if {${subport} eq "tenfourfox"} {
                         github.
     long_description    ${description}
     
-    github.setup        classilla tenfourfox 3660eb7e23797c9c15378afc842c41379de29ffc
-    version             20180916-000000
+    github.setup        classilla tenfourfox FPR10b1
+    version             20181008-FPR10b1
     
-    checksums           rmd160  340430eff023e0f62dc9e76d7ba1978ee50de159 \
-                        sha256  c47af3087b86a2c7fa29ec119133ba72768057d6d88ec90ae2d2e20570b95dac \
-                        size    257895865
+    checksums           rmd160  33ae36f3a038eacb513e3f82d053c3b86049a72f \
+                        sha256  c4476395d202db19f5cf96e196807b4583ba29a17b61b2e193b9a0edc0ef001d \
+                        size    257933275
 }
 
 # verify we have the SDK
