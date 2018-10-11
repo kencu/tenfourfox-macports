@@ -51,7 +51,7 @@ if {${subport} eq "tenfourfox"} {
 platform darwin {
     set tiger_sdkpath ${developer_dir}/SDKs/MacOSX10.4u.sdk
     if {![file exists $tiger_sdkpath]} {
-        pre-fetch { ui_error "Building $name @${version} requires the MacOSX10.4u.sdk to be present in ${developer_dir}/SDKs/" }
+        pre-fetch { ui_error "Building ${name} @${version} requires the MacOSX10.4u.sdk to be present in ${developer_dir}/SDKs/" }
     }
 }
 
