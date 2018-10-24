@@ -26,11 +26,11 @@ if {${subport} eq "tenfourfox"} {
                         to the latest released version of ${name}.
     long_description    ${description}
     
-    github.setup        classilla tenfourfox FPR9
+    github.setup        classilla tenfourfox FPR10
     
-    checksums           rmd160  bd85a44d770724995a4ce1bbfea955012e60f1dc \
-                        sha256  8593b7612962b08b70013dfa0a71f5b45202095572fa81308c6bf20c5ea32397 \
-                        size    257921849
+checksums           rmd160  077d65ea58e6e3a6acde1f09e7280598332d95f8 \
+                    sha256  5cdc9b4cc304b135ee7ae065beef5b55be1c34c1145871d36318c85c4f904667 \
+                    size    257940101
 
 } elseif {${subport} eq "tenfourfox-devel"} {
 
@@ -39,12 +39,12 @@ if {${subport} eq "tenfourfox"} {
                         github.
     long_description    ${description}
     
-    github.setup        classilla tenfourfox FPR10b1
+    github.setup        classilla tenfourfox FPR10
     version             20181008-FPR10b1
     
-    checksums           rmd160  33ae36f3a038eacb513e3f82d053c3b86049a72f \
-                        sha256  c4476395d202db19f5cf96e196807b4583ba29a17b61b2e193b9a0edc0ef001d \
-                        size    257933275
+checksums           rmd160  077d65ea58e6e3a6acde1f09e7280598332d95f8 \
+                    sha256  5cdc9b4cc304b135ee7ae065beef5b55be1c34c1145871d36318c85c4f904667 \
+                    size    257940101
 }
 
 # verify we have the SDK
