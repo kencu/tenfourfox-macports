@@ -26,11 +26,11 @@ if {${subport} eq "tenfourfox"} {
                         to the latest released version of ${name}.
     long_description    ${description}
     
-    github.setup        classilla tenfourfox FPR10
+    github.setup        classilla tenfourfox FPR11
     
-checksums           rmd160  077d65ea58e6e3a6acde1f09e7280598332d95f8 \
-                    sha256  5cdc9b4cc304b135ee7ae065beef5b55be1c34c1145871d36318c85c4f904667 \
-                    size    257940101
+checksums           rmd160  337e7b738742beb9ce353f57e9012e36ea463be3 \
+                    sha256  60b3e989fcf031106ffc76c1942df07f6f33a6788f983ed0056d92dad9cb34db \
+                    size    257963839
 
 } elseif {${subport} eq "tenfourfox-devel"} {
 
