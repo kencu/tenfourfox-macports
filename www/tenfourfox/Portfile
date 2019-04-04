@@ -39,12 +39,12 @@ checksums           rmd160  337e7b738742beb9ce353f57e9012e36ea463be3 \
                         github.
     long_description    ${description}
     
-    github.setup        classilla tenfourfox FPR10
-    version             20181008-FPR10b1
+    github.setup        classilla tenfourfox 23f3034604c94310b95a0c112f4c3e83920e511c
+    version             20190403-FPR14b1
     
-checksums           rmd160  077d65ea58e6e3a6acde1f09e7280598332d95f8 \
-                    sha256  5cdc9b4cc304b135ee7ae065beef5b55be1c34c1145871d36318c85c4f904667 \
-                    size    257940101
+	checksums           rmd160  fae05bfbb792e31e0bc5ec39a773b0ff8f6dc7a6 \
+						sha256  78c90b3ea88330d9de9677fade7127e321ac94e8223744b3e755dc636ec7763f \
+						size    258317019
 }
 
 # verify we have the SDK
@@ -93,6 +93,8 @@ platform darwin i386 {
 
     reinplace "s|/opt/local|${prefix}|g" ${worksrcpath}/.mozconfig
     reinplace "s|/opt/local|${prefix}|g" ${worksrcpath}/media/libvpx/Makefile.in
+
+    reinplace "s|/opt/local|${prefix}|g" ${worksrcpath}/104fx_copy.sh
     }
 }
 
@@ -125,7 +127,6 @@ build.cmd           gmake -f client.mk build
 # make it self-contained. This could be removed if we want to keep it lean, but then
 # we'd have to copy the app from a different spot
 pre-destroot {
-    reinplace "s|/opt/local|${prefix}|g" ${worksrcpath}/104fx_copy.sh
     system -W ${worksrcpath} "./104fx_copy.sh TenFourFox.app"
 }
 
