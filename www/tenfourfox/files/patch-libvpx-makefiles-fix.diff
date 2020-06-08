@@ -12,12 +12,14 @@ diff --git a/media/libvpx/Makefile.in b/media/libvpx/Makefile.in
 index 3b9102857..d48410779 100644
 --- a/media/libvpx/Makefile.in
 +++ b/media/libvpx/Makefile.in
-@@ -9,6 +9,12 @@ VPX_AS=gcc
+@@ -9,6 +9,14 @@ VPX_AS=gcc
  VPX_ASM_SUFFIX=s
  endif
  
 +ifdef VPX_X86_ASM
-+CC=/opt/local/bin/clang-mp-3.4 -arch i386 -O3
++CC=/opt/local/bin/clang-mp-3.4
++CC              += -arch i386
++CC              += -O3
 +VPX_AS=yasm
 +VPX_ASM_SUFFIX=asm
 +endif

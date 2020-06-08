@@ -26,11 +26,11 @@ if {${subport} eq "tenfourfox"} {
                         to the latest released version of ${name}.
     long_description    ${description}
     
-    github.setup        classilla tenfourfox FPR18
+    github.setup        classilla tenfourfox FPR23
     
-    checksums           rmd160  066f714323d4413621735f59ef769e6bb5083ff5 \
-                        sha256  a8eb8b21f4ab22cbd85baca56b94b20ffd6d0021df9205cf8b9f921903687b17 \
-                        size    258506360
+    checksums           rmd160  2ec72fb431f82b0bcaf0401fd5bd997319ca86de \
+                        sha256  51dc56987950a879e0b8877c2ec3f50dd9b9eeaf3f7009d852a632940d8871ed \
+                        size    325064213
 
 } elseif {${subport} eq "tenfourfox-devel"} {
 
@@ -39,8 +39,8 @@ if {${subport} eq "tenfourfox"} {
                         github.
     long_description    ${description}
     
-    github.setup        classilla tenfourfox cc2e336b2f45779c2a338cd410b4a175622b87a6
-    version             20200126-FPR19b1
+    github.setup        classilla tenfourfox 8304421b75c46a967d6301ec047f6bfb31ec21a0
+    version             20200607-FPR23
     
     checksums           rmd160  e8212a2af4df9dfdc65e8764d30d4b16998fa06f \
                         sha256  7d5a6255682ad1df92b68cebbd01ebb927e0cf059572cdca67abcca72e301dd0 \
@@ -90,24 +90,26 @@ platform darwin i386 {
     post-extract {
         copy ${filespath}/ken-intel-nodebug.mozconfig ${worksrcpath}/.mozconfig
 #        copy ${filespath}/ken-intel-nodebug-with-ion.mozconfig ${worksrcpath}/.mozconfig
-
-    reinplace "s|/opt/local|${prefix}|g" ${worksrcpath}/.mozconfig
-    reinplace "s|/opt/local|${prefix}|g" ${worksrcpath}/media/libvpx/Makefile.in
-
-    reinplace "s|/opt/local|${prefix}|g" ${worksrcpath}/104fx_copy.sh
     }
-}
-
-platform darwin i386 {
-    # TFF-Intel specific patches -- only 3!
+    
+    # TFF-Intel specific patches
     patch.pre_args      -p1
     patchfiles-append   patch-ots-stdlog-fix.diff
     patchfiles-append   patch-ycbcr-assembly-fix.diff
     patchfiles-append   patch-libvpx-makefiles-fix.diff
+    patchfiles-append   tenfourfox-nss-makefile-use-clang-3-4.diff
+    patchfiles-append   tenfourfox-use-old-which.diff
 
-    # uncomment these extra patches to support ion build
+    # uncomment these extra patches to support ion build - last tested 2018
     # patchfiles-append   patch-js-src-asmjs-asmjssignalhanders-cpp-register-structure.diff
     # patchfiles-append   patch-js-src-irregexp-nativeregexpmacroassembler-cpp.diff
+
+    post-patch {
+		reinplace "s|/opt/local|${prefix}|g" ${worksrcpath}/.mozconfig
+		reinplace "s|/opt/local|${prefix}|g" ${worksrcpath}/media/libvpx/Makefile.in
+		reinplace "s|/opt/local|${prefix}|g" ${worksrcpath}/config/external/nss/Makefile.in
+		reinplace "s|/opt/local|${prefix}|g" ${worksrcpath}/104fx_copy.sh
+    }
 }
 
 use_autoconf        yes

@@ -1,0 +1,19 @@
+diff --git a/config/external/nss/Makefile.in b/config/external/nss/Makefile.in
+index 1e960672e..2c68d2ccf 100644
+--- a/config/external/nss/Makefile.in
++++ b/config/external/nss/Makefile.in
+@@ -10,6 +10,14 @@ CXX_WRAPPER =
+ 
+ default::
+ 
++CC=/opt/local/bin/clang-mp-3.4
++CC              += -arch i386
++CC              += -O3
++
++CCC=/opt/local/bin/clang++-mp-3.4
++CCC             += -arch i386
++CCC             += -O3
++
+ include $(topsrcdir)/config/makefiles/functions.mk
+ 
+ NSS_LIBS = \
